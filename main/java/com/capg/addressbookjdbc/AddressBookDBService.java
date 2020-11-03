@@ -23,6 +23,7 @@ import java.util.ArrayList;
 public class AddressBookDBService {
 	private static Logger log = Logger.getLogger(AddressBookDBService.class.getName());
 	private static AddressBookDBService addressBookDBService;
+	private PreparedStatement preparedStatement;
 
 	private AddressBookDBService() {
 	}
@@ -65,11 +66,36 @@ public class AddressBookDBService {
 		return this.getContactDetailsUsingSqlQuery(sql);
 	}
 
+	public int updateEmployeeData(String email, String address) {
+		try (Connection connection = this.getConnection();) {
+			String sql = "update contact_address set address=? where email_id=?;";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, address);
+			preparedStatement.setString(2, email);
+			return preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			log.log(Level.SEVERE, "Failed : "+e);
+		}
+		return 0;
+	}
+
+	public List<Contact> getContactDataByEmail(String email) {
+		String sql = String.format("select a.address_book_name, a.address_book_type, c.first_name, c.last_name, c.email_id, p.phone_no, d.address, d.city, d.state, d.zip"
+					+ " from contact c"
+					+ " inner join address_book_dictionary a"
+					+ " on c.address_book_id = a.address_book_id"
+					+ " inner join contact_number p"
+					+ " on c.email_id = p.email_id"
+					+ " inner join contact_address d"
+					+ " on c.email_id = d.email_id where d.email_id = '%s'", email);
+		return this.getContactDetailsUsingSqlQuery(sql);
+	}
+
 	private List<Contact> getContactDetailsUsingSqlQuery(String sql) {
 		List<Contact> ContactList = null;
 		try (Connection connection = this.getConnection();) {
-			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			ResultSet result = preparedStatement.executeQuery(sql);
+			this.preparedStatement = connection.prepareStatement(sql);
+			ResultSet result = this.preparedStatement.executeQuery(sql);
 			ContactList = this.getAddressBookData(result);
 		} catch (SQLException e) {
 			log.log(Level.SEVERE, "Failed : "+e);

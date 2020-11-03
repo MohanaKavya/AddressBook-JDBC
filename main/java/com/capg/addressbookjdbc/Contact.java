@@ -41,4 +41,14 @@ public class Contact {
 			+ addressBookType;
 
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Contact that = (Contact) o;
+		return firstName.equals(that.firstName) && address.equals(that.address) && email.equals(that.email);
+	}
 }

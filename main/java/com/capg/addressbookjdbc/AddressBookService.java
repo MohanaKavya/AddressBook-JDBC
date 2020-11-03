@@ -62,4 +62,39 @@ public class AddressBookService {
 		
 	}
 
+	/**
+	 * @param email : Unique identification 
+	 * @param address to be updates
+	 */
+	public void updateContactDetails(String email, String address) {
+		try {
+			int numOfRowsModified = addressBookDBService.updateEmployeeData(email, address);
+			if (numOfRowsModified == 0) 
+				throw new AddressBookJDBCException("no rows updated", AddressBookJDBCException.ExceptionType.UPDATE_DATABASE_EXCEPTION);
+			Contact contact = this.getContactData(email);
+			if (contact != null)
+				contact.address = address;
+		} catch(AddressBookJDBCException e) {
+			log.log(Level.SEVERE, e.getMessage());
+		}
+		
+	}
+
+	/**
+	 * @param email : unique identification
+	 * @return Contact Class object
+	 */
+	private Contact getContactData(String email) {
+		return this.contactList.stream().filter(contact -> contact.email.equals(email)).findFirst().orElse(null);
+	}
+
+	/**
+	 * @param email : unique identification
+	 * @return true or false
+	 */
+	public boolean checkConatctDetailsInSyncWithDB(String email) {
+		List<Contact> contactList = addressBookDBService.getContactDataByEmail(email);
+		return contactList.get(0).equals(getContactData(email));
+	}
+
 }
