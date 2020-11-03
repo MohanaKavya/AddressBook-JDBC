@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-11-03T05:46:36.135881800Z</date>
+  <millis>1604382396135</millis>
+  <nanos>881800</nanos>
+  <sequence>0</sequence>
+  <logger>com.capg.addressbookjdbc.AddressBookService</logger>
+  <level>INFO</level>
+  <class>com.capg.addressbookjdbc.AddressBookService</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Welcome to Address Book Database Connectivity</message>
+</record>
+</log>
