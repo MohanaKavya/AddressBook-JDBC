@@ -127,4 +127,13 @@ public class AddressBookService {
 		return contactByCityOrState;
 	}
 
+	/**
+	 *Insert new record into Database
+	 */
+	public void addContactToDatabase(String firstName, String lastName, String address, String city, String state,
+			int zip, String phoneNo, String email, String addressBookName, String type, LocalDate date) {
+		contactList.add(addressBookDBService.addContact(firstName, lastName, address, city, state, zip, phoneNo, email,
+				addressBookName, type, date));		
+	}
+
 }

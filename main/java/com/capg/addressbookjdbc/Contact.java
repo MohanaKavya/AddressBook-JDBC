@@ -3,6 +3,8 @@
  */
 package com.capg.addressbookjdbc;
 
+import java.time.LocalDate;
+
 /**
  * @author Mohana Kavya
  *
@@ -18,6 +20,7 @@ public class Contact {
 	public String email;
 	public String addressBookName;
 	public String addressBookType;
+	public LocalDate date;
 
 	public Contact(String firstName, String lastName, String address, String city, String state, int zip,
 			String phoneNumber, String email, String addressBookName, String addressBookType) {
@@ -31,6 +34,12 @@ public class Contact {
 		this.email = email;
 		this.addressBookName = addressBookName;
 		this.addressBookType = addressBookType;
+	}
+	
+	public Contact(String firstName, String lastName, String address, String city, String state, int zip,
+			String phoneNumber, String email, String addressBookName, String addressBookType, LocalDate date) {
+		this(firstName, lastName, address, city, state, zip, phoneNumber, email, addressBookName, addressBookType);
+		this.date = date;
 	}
 	
 	@Override
