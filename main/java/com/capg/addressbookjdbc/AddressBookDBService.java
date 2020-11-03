@@ -10,10 +10,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -79,6 +81,18 @@ public class AddressBookDBService {
 		return 0;
 	}
 
+	public List<Contact> getContactForGivenDateRange(LocalDate startDate, LocalDate endDate) {
+		String sql = String.format("select a.address_book_name, a.address_book_type, c.first_name, c.last_name, c.email_id, c.date_added, p.phone_no, d.address, d.city, d.state, d.zip"
+				+ " from contact c"
+				+ " inner join address_book_dictionary a"
+				+ " on c.address_book_id = a.address_book_id AND c.date_added BETWEEN '%s' and '%s'"
+				+ " inner join contact_number p"
+				+ " on c.email_id = p.email_id"
+				+ " inner join contact_address d"
+				+ " on c.email_id = d.email_id;", Date.valueOf(startDate), Date.valueOf(endDate));
+		return this.getContactDetailsUsingSqlQuery(sql);
+	}
+
 	public List<Contact> getContactDataByEmail(String email) {
 		String sql = String.format("select a.address_book_name, a.address_book_type, c.first_name, c.last_name, c.email_id, p.phone_no, d.address, d.city, d.state, d.zip"
 					+ " from contact c"
@@ -87,7 +101,7 @@ public class AddressBookDBService {
 					+ " inner join contact_number p"
 					+ " on c.email_id = p.email_id"
 					+ " inner join contact_address d"
-					+ " on c.email_id = d.email_id where d.email_id = '%s'", email);
+					+ " on c.email_id = d.email_id where d.email_id = '%s';", email);
 		return this.getContactDetailsUsingSqlQuery(sql);
 	}
 

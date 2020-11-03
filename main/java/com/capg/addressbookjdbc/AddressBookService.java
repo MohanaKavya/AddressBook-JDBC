@@ -4,6 +4,7 @@
 package com.capg.addressbookjdbc;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
@@ -95,6 +96,25 @@ public class AddressBookService {
 	public boolean checkConatctDetailsInSyncWithDB(String email) {
 		List<Contact> contactList = addressBookDBService.getContactDataByEmail(email);
 		return contactList.get(0).equals(getContactData(email));
+	}
+
+	/**
+	 * @param startDate
+	 * @param endDate
+	 * @return List of Person Contact Details
+	 */
+	public List<Contact> readContactDataForGivenDateRange(LocalDate startDate, LocalDate endDate) {
+		try {
+			List<Contact> contactList = addressBookDBService.getContactForGivenDateRange(startDate, endDate);
+
+			if(!(contactList.isEmpty()))
+				return contactList;
+			else
+				throw new AddressBookJDBCException("no rows selected for the given date range", AddressBookJDBCException.ExceptionType.DATA_RETRIEVAL_EXCEPTION);
+			} catch(AddressBookJDBCException e) {
+				log.log(Level.SEVERE, e.getMessage()+" : "+e);
+			}
+		return null;
 	}
 
 }
