@@ -4,6 +4,7 @@
 package com.capg.addressbookjdbc;
 
 import java.util.List;
+import java.util.Map;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -15,8 +16,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @author Mohana Kavya
@@ -103,6 +106,31 @@ public class AddressBookDBService {
 					+ " inner join contact_address d"
 					+ " on c.email_id = d.email_id where d.email_id = '%s';", email);
 		return this.getContactDetailsUsingSqlQuery(sql);
+	}
+	
+	public Map<String, Integer> getContactsByCityOrState() {
+		Map<String, Integer> contactByCityOrStateMap = new HashMap<>();
+		ResultSet resultSet;
+		String sqlCity = "SELECT city, count(email_id) as count_by_city from contact_address group by City; ";
+		String sqlState = "SELECT state, count(email_id) as count_by_state from contact_address group by State;";
+		try (Connection connection = addressBookDBService.getConnection()) {
+			Statement statement = connection.createStatement();
+			resultSet = statement.executeQuery(sqlCity);
+			while (resultSet.next()) {
+				String city = resultSet.getString("city");
+				Integer count = resultSet.getInt("count_by_city");
+				contactByCityOrStateMap.put(city,count);
+			}
+			resultSet = statement.executeQuery(sqlState);
+			while (resultSet.next()) {
+				String state = resultSet.getString("state");
+				Integer count = resultSet.getInt("count_by_state");
+				contactByCityOrStateMap.put(state,count);
+			}
+		} catch (SQLException e) {
+			log.log(Level.SEVERE, "Failed : "+e);
+		}
+		return contactByCityOrStateMap;
 	}
 
 	private List<Contact> getContactDetailsUsingSqlQuery(String sql) {

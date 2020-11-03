@@ -5,6 +5,7 @@ package com.capg.addressbookjdbc;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -38,5 +39,13 @@ public class AddressBookServiceTest {
 		LocalDate endDate = LocalDate.of(2019, 12, 30);
 		List<Contact> contactList = addressBookService.readContactDataForGivenDateRange(startDate, endDate);
 		Assert.assertEquals(2, contactList.size());
+	}
+	@Test
+	public void givenContacts_RetrieveNumberOfContacts_ByCityOrState() {
+		AddressBookService addressBookService = new AddressBookService();
+		addressBookService.readContactData();
+		Map<String, Integer> contactByCityOrStateMap = addressBookService.readContactByCityOrState();
+		Assert.assertEquals(true, contactByCityOrStateMap.get("Hyd").equals(1));
+		Assert.assertEquals(true, contactByCityOrStateMap.get("Kerala").equals(1));
 	}
 }

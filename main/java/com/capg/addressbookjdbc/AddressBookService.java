@@ -6,6 +6,7 @@ package com.capg.addressbookjdbc;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -20,6 +21,7 @@ public class AddressBookService {
 	
 	private List<Contact> contactList;
 	private AddressBookDBService addressBookDBService;
+	private Map<String, Integer> contactByCityOrState;
 
 	public AddressBookService() {
 		addressBookDBService = AddressBookDBService.getInstance();
@@ -115,6 +117,14 @@ public class AddressBookService {
 				log.log(Level.SEVERE, e.getMessage()+" : "+e);
 			}
 		return null;
+	}
+
+	/**
+	 * @return Map Key : City/State Names Values : Count of Persons 
+	 */
+	public Map<String, Integer> readContactByCityOrState() {
+		this.contactByCityOrState=addressBookDBService.getContactsByCityOrState();
+		return contactByCityOrState;
 	}
 
 }
