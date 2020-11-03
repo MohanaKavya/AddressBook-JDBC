@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-11-03T06:52:14.062905Z</date>
+  <millis>1604386334062</millis>
+  <nanos>905000</nanos>
+  <sequence>0</sequence>
+  <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
+  <level>INFO</level>
+  <class>com.capg.addressbookjdbc.AddressBookDBService</class>
+  <method>getConnection</method>
+  <thread>1</thread>
+  <message>Connecting to database: jdbc:mysql://localhost:3306/address_book_service?useSSL=false</message>
+</record>
+<record>
+  <date>2020-11-03T06:52:14.421300Z</date>
+  <millis>1604386334421</millis>
+  <nanos>300000</nanos>
+  <sequence>1</sequence>
+  <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
+  <level>INFO</level>
+  <class>com.capg.addressbookjdbc.AddressBookDBService</class>
+  <method>getConnection</method>
+  <thread>1</thread>
+  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@7ff95560</message>
+</record>
+</log>

@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2020-11-03T05:46:36.135881800Z</date>
-  <millis>1604382396135</millis>
-  <nanos>881800</nanos>
+  <date>2020-11-03T06:51:44.559466600Z</date>
+  <millis>1604386304559</millis>
+  <nanos>466600</nanos>
   <sequence>0</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookService</logger>
   <level>INFO</level>
