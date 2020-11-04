@@ -3,18 +3,26 @@
  */
 package com.capg.addressbookjdbc;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.capg.addressbookjdbc.AddressBookService.IOService;
 
 /**
  * @author Mohana Kavya
  *
  */
 public class AddressBookServiceTest {
+	private static Logger log = Logger.getLogger(AddressBookService.class.getName());
+
 	@Test
 	public void contactsWhenRetrievedFromDB_ShouldMatchCount() {
 		AddressBookService addressBookService = new AddressBookService();
@@ -59,5 +67,27 @@ public class AddressBookServiceTest {
 				"arjun@gmail.com", "College", "Alumni", date);
 		boolean result = addressBookService.checkConatctDetailsInSyncWithDB("arjun@gmail.com");
 		Assert.assertTrue(result);
+	}
+	
+	@Test
+	public void givenContacts_WhenAddedToDB_ShouldMatchEmployeeEntries() {
+		Contact[] arrayOfEmployee = {
+				new Contact("Mohana", "Kavya", "Sathupalli", "Khammam", "Telangana", 507012, "98654331",
+						"mohanakavya@gmail.com", "Casual", LocalDate.now()),
+				new Contact("Mounika", "Anne", "Miyapur", "Hyderabad", "Telangana", 500050, "96763129",
+						"mounikaanne@gmail.com", "Personal", LocalDate.now()),
+				new Contact("Sohail", "Syed", "SGNagar", "Kalpakkam", "TamilNadu", 600010, "87655433",
+						"sohailsyed@gmail.com", "Corporate", LocalDate.now()) };
+		AddressBookService addressBookService = new AddressBookService();
+		addressBookService.readData(IOService.DB_IO);
+		Instant start = Instant.now();
+		addressBookService.addContact(Arrays.asList(arrayOfEmployee));
+		Instant end = Instant.now();
+		log.info("Duration without thread : " + Duration.between(start, end));
+		Instant threadStart = Instant.now();
+		addressBookService.addEmployeeToPayrollWithThreads(Arrays.asList(arrayOfEmployee));
+		Instant threadEnd = Instant.now();
+		log.info("Duartion with Thread : " + Duration.between(threadStart, threadEnd));
+		Assert.assertEquals(10, addressBookService.countEntries(IOService.DB_IO));
 	}
 }

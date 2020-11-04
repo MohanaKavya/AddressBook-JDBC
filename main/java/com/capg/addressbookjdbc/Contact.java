@@ -4,6 +4,7 @@
 package com.capg.addressbookjdbc;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * @author Mohana Kavya
@@ -50,6 +51,19 @@ public class Contact {
 			+ addressBookType;
 
 	}
+	public Contact(String firstName, String lastName, String address, String city, String state, int zip,
+			String phoneNumber, String email, String addressBookName, LocalDate startDate) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.addressBookName = addressBookName;
+		this.date = startDate;
+	}
 	
 	@Override
 	public boolean equals(Object o) {
@@ -59,5 +73,10 @@ public class Contact {
 			return false;
 		Contact that = (Contact) o;
 		return firstName.equals(that.firstName) && address.equals(that.address) && email.equals(that.email);
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(firstName, lastName, address, city, state, zip, phoneNumber, email, addressBookName,
+				date);
 	}
 }
