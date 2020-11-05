@@ -60,7 +60,7 @@ public class AddressBookDBService {
 	}
 
 	public List<Contact> readData() {
-		String sql = "select a.address_book_name, a.address_book_type, c.first_name, c.last_name, c.email_id, p.phone_no, d.address, d.city, d.state, d.zip"
+		String sql = "select a.address_book_name, a.address_book_type, c.first_name, c.last_name, c.email_id, c.date_added, p.phone_no, d.address, d.city, d.state, d.zip"
 				+ " from contact c"
 				+ " inner join address_book_dictionary a"
 				+ " on c.address_book_id = a.address_book_id"
@@ -97,7 +97,7 @@ public class AddressBookDBService {
 	}
 
 	public List<Contact> getContactDataByEmail(String email) {
-		String sql = String.format("select a.address_book_name, a.address_book_type, c.first_name, c.last_name, c.email_id, p.phone_no, d.address, d.city, d.state, d.zip"
+		String sql = String.format("select a.address_book_name, a.address_book_type, c.first_name, c.last_name, c.email_id, c.date_added, p.phone_no, d.address, d.city, d.state, d.zip"
 					+ " from contact c"
 					+ " inner join address_book_dictionary a"
 					+ " on c.address_book_id = a.address_book_id"
@@ -133,22 +133,44 @@ public class AddressBookDBService {
 		return contactByCityOrStateMap;
 	}
 	
-	public Contact addContact(String firstName, String lastName, String address, String city, String state, int zip,
+	public int addContact(String firstName, String lastName, String address, String city, String state, int zip,
 			String phone, String email, String addressBookName, String type, LocalDate startDate) {
 		Connection connection = null;
+		Statement statement = null;
+		int rowsAffected = 0;
+		int address_id = 0;
 		try {
 			connection = this.getConnection();
 			connection.setAutoCommit(false);
+			statement = connection.createStatement();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, "Failed : "+e);
 		}
 
 		try {
-			Statement statement = connection.createStatement();
 			String sql = String.format(
-					"insert into contacts(firstName,lastName,Address_Book_Name,Address,City,State,Zip,Phone_Number,Email,startDate) values ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",
-					firstName, lastName, addressBookName, address, city, state, zip, phone, email, startDate);
-			statement.executeUpdate(sql);
+					"insert into address_book_dictionary(address_book_name, address_book_type) values ('%s','%s')",
+					addressBookName, type);
+			rowsAffected = statement.executeUpdate(sql, statement.RETURN_GENERATED_KEYS);
+			if(rowsAffected>0) {
+				ResultSet result = statement.getGeneratedKeys();
+				while(result.next()) {
+					address_id = result.getInt(1);
+				}
+			}
+		} catch (SQLException e) {
+			log.log(Level.SEVERE, "Failed : "+e);
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				log.log(Level.SEVERE, "Failed : "+e);
+			}
+		}
+		try {
+			String sql = String.format(
+					"insert into contact(address_book_id, first_name, last_name, email_id ,date_added) values ('%s','%s','%s','%s','%s')",
+					address_id, firstName, lastName, email, startDate);
+			rowsAffected = statement.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			try {
@@ -157,7 +179,32 @@ public class AddressBookDBService {
 				e.printStackTrace();
 			}
 		}
-
+		try {
+			String sql = String.format(
+					"insert into contact_address(email_id, Address,City,State,Zip) values ('%s','%s','%s','%s','%s')",
+					email, address, city, state, zip);
+			rowsAffected = statement.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e.printStackTrace();
+			}
+		}
+		try {
+			String sql = String.format(
+					"insert into contact_number(email_id, phone_no) values ('%s','%s')",
+					email, phone);
+			rowsAffected = statement.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e.printStackTrace();
+			}
+		}
 		try {
 			connection.commit();
 		} catch (SQLException e) {
@@ -171,7 +218,7 @@ public class AddressBookDBService {
 				}
 			}
 		}
-		return new Contact(firstName, lastName, address, city, state, zip, phone, email, addressBookName, type, startDate);
+		return rowsAffected;
 	}
 	
 	private List<Contact> getContactDetailsUsingSqlQuery(String sql) {
@@ -200,8 +247,9 @@ public class AddressBookDBService {
 				String phoneNumber = result.getString("phone_no");
 				String email = result.getString("email_id");
 				String addressBookType = result.getString("address_book_type");
+				LocalDate date = result.getDate("date_added").toLocalDate();
 				contactList.add(new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email,
-						addressBookName, addressBookType));
+						addressBookName, addressBookType, date));
 			}
 		} catch (SQLException e) {
 			log.log(Level.SEVERE, "Failed : "+e);

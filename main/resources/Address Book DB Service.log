@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2020-11-03T17:53:58.614741300Z</date>
-  <millis>1604426038614</millis>
-  <nanos>741300</nanos>
+  <date>2020-11-05T14:34:20.093974600Z</date>
+  <millis>1604586860093</millis>
+  <nanos>974600</nanos>
   <sequence>0</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>Connecting to database: jdbc:mysql://localhost:3306/address_book_service?useSSL=false</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.069621100Z</date>
-  <millis>1604426039069</millis>
-  <nanos>621100</nanos>
+  <date>2020-11-05T14:34:20.808064400Z</date>
+  <millis>1604586860808</millis>
+  <nanos>64400</nanos>
   <sequence>1</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
@@ -26,9 +26,9 @@
   <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@7ff95560</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.131455600Z</date>
-  <millis>1604426039131</millis>
-  <nanos>455600</nanos>
+  <date>2020-11-05T14:34:20.939711800Z</date>
+  <millis>1604586860939</millis>
+  <nanos>711800</nanos>
   <sequence>2</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
@@ -38,21 +38,21 @@
   <message>Connecting to database: jdbc:mysql://localhost:3306/address_book_service?useSSL=false</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.137326200Z</date>
-  <millis>1604426039137</millis>
-  <nanos>326200</nanos>
+  <date>2020-11-05T14:34:20.945695400Z</date>
+  <millis>1604586860945</millis>
+  <nanos>695400</nanos>
   <sequence>3</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
   <class>com.capg.addressbookjdbc.AddressBookDBService</class>
   <method>getConnection</method>
   <thread>1</thread>
-  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@794cb805</message>
+  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@20d28811</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.141318100Z</date>
-  <millis>1604426039141</millis>
-  <nanos>318100</nanos>
+  <date>2020-11-05T14:34:20.950686500Z</date>
+  <millis>1604586860950</millis>
+  <nanos>686500</nanos>
   <sequence>4</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
@@ -62,21 +62,21 @@
   <message>Connecting to database: jdbc:mysql://localhost:3306/address_book_service?useSSL=false</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.146455600Z</date>
-  <millis>1604426039146</millis>
-  <nanos>455600</nanos>
+  <date>2020-11-05T14:34:20.957664200Z</date>
+  <millis>1604586860957</millis>
+  <nanos>664200</nanos>
   <sequence>5</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
   <class>com.capg.addressbookjdbc.AddressBookDBService</class>
   <method>getConnection</method>
   <thread>1</thread>
-  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@60d8c9b7</message>
+  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@5cee5251</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.150444800Z</date>
-  <millis>1604426039150</millis>
-  <nanos>444800</nanos>
+  <date>2020-11-05T14:34:20.964646300Z</date>
+  <millis>1604586860964</millis>
+  <nanos>646300</nanos>
   <sequence>6</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
@@ -86,21 +86,21 @@
   <message>Connecting to database: jdbc:mysql://localhost:3306/address_book_service?useSSL=false</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.155433Z</date>
-  <millis>1604426039155</millis>
-  <nanos>433000</nanos>
+  <date>2020-11-05T14:34:20.970632800Z</date>
+  <millis>1604586860970</millis>
+  <nanos>632800</nanos>
   <sequence>7</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
   <class>com.capg.addressbookjdbc.AddressBookDBService</class>
   <method>getConnection</method>
   <thread>1</thread>
-  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@5c909414</message>
+  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@1534f01b</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.159420400Z</date>
-  <millis>1604426039159</millis>
-  <nanos>420400</nanos>
+  <date>2020-11-05T14:34:20.978608300Z</date>
+  <millis>1604586860978</millis>
+  <nanos>608300</nanos>
   <sequence>8</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
@@ -110,21 +110,21 @@
   <message>Connecting to database: jdbc:mysql://localhost:3306/address_book_service?useSSL=false</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.164438400Z</date>
-  <millis>1604426039164</millis>
-  <nanos>438400</nanos>
+  <date>2020-11-05T14:34:20.988581600Z</date>
+  <millis>1604586860988</millis>
+  <nanos>581600</nanos>
   <sequence>9</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
   <class>com.capg.addressbookjdbc.AddressBookDBService</class>
   <method>getConnection</method>
   <thread>1</thread>
-  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@4ddced80</message>
+  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@4386f16</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.167400100Z</date>
-  <millis>1604426039167</millis>
-  <nanos>400100</nanos>
+  <date>2020-11-05T14:34:20.995562100Z</date>
+  <millis>1604586860995</millis>
+  <nanos>562100</nanos>
   <sequence>10</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
@@ -134,21 +134,21 @@
   <message>Connecting to database: jdbc:mysql://localhost:3306/address_book_service?useSSL=false</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.171390600Z</date>
-  <millis>1604426039171</millis>
-  <nanos>390600</nanos>
+  <date>2020-11-05T14:34:21.001546600Z</date>
+  <millis>1604586861001</millis>
+  <nanos>546600</nanos>
   <sequence>11</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
   <class>com.capg.addressbookjdbc.AddressBookDBService</class>
   <method>getConnection</method>
   <thread>1</thread>
-  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@2ea227af</message>
+  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@79b06cab</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.180432900Z</date>
-  <millis>1604426039180</millis>
-  <nanos>432900</nanos>
+  <date>2020-11-05T14:34:21.019497900Z</date>
+  <millis>1604586861019</millis>
+  <nanos>497900</nanos>
   <sequence>12</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
@@ -158,21 +158,21 @@
   <message>Connecting to database: jdbc:mysql://localhost:3306/address_book_service?useSSL=false</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.185094900Z</date>
-  <millis>1604426039185</millis>
-  <nanos>94900</nanos>
+  <date>2020-11-05T14:34:21.028475700Z</date>
+  <millis>1604586861028</millis>
+  <nanos>475700</nanos>
   <sequence>13</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
   <class>com.capg.addressbookjdbc.AddressBookDBService</class>
   <method>getConnection</method>
   <thread>1</thread>
-  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@bef2d72</message>
+  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@2f7c2f4f</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.188087100Z</date>
-  <millis>1604426039188</millis>
-  <nanos>87100</nanos>
+  <date>2020-11-05T14:34:21.034458700Z</date>
+  <millis>1604586861034</millis>
+  <nanos>458700</nanos>
   <sequence>14</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
@@ -182,21 +182,21 @@
   <message>Connecting to database: jdbc:mysql://localhost:3306/address_book_service?useSSL=false</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.193075Z</date>
-  <millis>1604426039193</millis>
-  <nanos>75000</nanos>
+  <date>2020-11-05T14:34:21.047424200Z</date>
+  <millis>1604586861047</millis>
+  <nanos>424200</nanos>
   <sequence>15</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
   <class>com.capg.addressbookjdbc.AddressBookDBService</class>
   <method>getConnection</method>
   <thread>1</thread>
-  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@659a969b</message>
+  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@5be6e01c</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.197898300Z</date>
-  <millis>1604426039197</millis>
-  <nanos>898300</nanos>
+  <date>2020-11-05T14:34:21.058395100Z</date>
+  <millis>1604586861058</millis>
+  <nanos>395100</nanos>
   <sequence>16</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
@@ -206,21 +206,21 @@
   <message>Connecting to database: jdbc:mysql://localhost:3306/address_book_service?useSSL=false</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.201833600Z</date>
-  <millis>1604426039201</millis>
-  <nanos>833600</nanos>
+  <date>2020-11-05T14:34:21.066372900Z</date>
+  <millis>1604586861066</millis>
+  <nanos>372900</nanos>
   <sequence>17</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
   <class>com.capg.addressbookjdbc.AddressBookDBService</class>
   <method>getConnection</method>
   <thread>1</thread>
-  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@35047d03</message>
+  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@10e92f8f</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.204837700Z</date>
-  <millis>1604426039204</millis>
-  <nanos>837700</nanos>
+  <date>2020-11-05T14:34:21.075349Z</date>
+  <millis>1604586861075</millis>
+  <nanos>349000</nanos>
   <sequence>18</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
@@ -230,15 +230,39 @@
   <message>Connecting to database: jdbc:mysql://localhost:3306/address_book_service?useSSL=false</message>
 </record>
 <record>
-  <date>2020-11-03T17:53:59.209812400Z</date>
-  <millis>1604426039209</millis>
-  <nanos>812400</nanos>
+  <date>2020-11-05T14:34:21.083328300Z</date>
+  <millis>1604586861083</millis>
+  <nanos>328300</nanos>
   <sequence>19</sequence>
   <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
   <level>INFO</level>
   <class>com.capg.addressbookjdbc.AddressBookDBService</class>
   <method>getConnection</method>
   <thread>1</thread>
-  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@4c9f8c13</message>
+  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@5223e5ee</message>
+</record>
+<record>
+  <date>2020-11-05T14:34:21.096307100Z</date>
+  <millis>1604586861096</millis>
+  <nanos>307100</nanos>
+  <sequence>20</sequence>
+  <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
+  <level>INFO</level>
+  <class>com.capg.addressbookjdbc.AddressBookDBService</class>
+  <method>getConnection</method>
+  <thread>1</thread>
+  <message>Connecting to database: jdbc:mysql://localhost:3306/address_book_service?useSSL=false</message>
+</record>
+<record>
+  <date>2020-11-05T14:34:21.109259100Z</date>
+  <millis>1604586861109</millis>
+  <nanos>259100</nanos>
+  <sequence>21</sequence>
+  <logger>com.capg.addressbookjdbc.AddressBookDBService</logger>
+  <level>INFO</level>
+  <class>com.capg.addressbookjdbc.AddressBookDBService</class>
+  <method>getConnection</method>
+  <thread>1</thread>
+  <message>Connection successful: com.mysql.cj.jdbc.ConnectionImpl@22a637e7</message>
 </record>
 </log>

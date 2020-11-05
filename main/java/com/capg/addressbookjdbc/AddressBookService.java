@@ -132,8 +132,18 @@ public class AddressBookService {
 	 */
 	public void addContactToDatabase(String firstName, String lastName, String address, String city, String state,
 			int zip, String phoneNo, String email, String addressBookName, String type, LocalDate date) {
-		contactList.add(addressBookDBService.addContact(firstName, lastName, address, city, state, zip, phoneNo, email,
-				addressBookName, type, date));		
+		try {
+			int rowsAffected = addressBookDBService.addContact(firstName, lastName, address, city, state, zip, phoneNo, email,
+					addressBookName, type, date);
+			if(rowsAffected > 0)
+				this.contactList.add(new Contact(firstName, lastName, address, city, state, zip, phoneNo, email,
+					addressBookName, type, date));
+			else
+				throw new AddressBookJDBCException("no new rows added", AddressBookJDBCException.ExceptionType.INSERT_INTO_DATABASE_EXCEPTION);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+			
 	}
 
 }
